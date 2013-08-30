@@ -304,18 +304,18 @@ func EventMouseButtonGLFW(glfwButton, glfwAction int) {
 	C.TwEventMouseButtonGLFW(C.int(glfwButton),C.int(glfwAction))
 }
 
-func TwEventKeyGLFW(glfwKey, glfwAction int) {
+func EventKeyGLFW(glfwKey, glfwAction int) {
 	C.TwEventKeyGLFW( C.int(glfwKey), C.int(glfwAction) )
 }
 
-func TwEventCharGLFW(glfwChar, glfwAction int) {
+func EventCharGLFW(glfwChar, glfwAction int) {
 	C.TwEventCharGLFW(C.int(glfwChar), C.int(glfwAction))
 }
 
-func TwEventMousePosGLFW(mouseX, mouseY int) {
+func EventMousePosGLFW(mouseX, mouseY int) {
 	C.TwEventMousePosGLFW(C.int(mouseX), C.int(mouseY))
 }
 
-func TwEventMouseWheelGLFW(wheelPos int) {
+func EventMouseWheelGLFW(wheelPos int) {
 	C.TwEventMouseWheelGLFW(C.int(wheelPos))
 }
