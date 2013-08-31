@@ -11,11 +11,7 @@ import "unsafe"
 import "reflect"
 
 func toBool(i C.int) bool {
-	if i == 0 {
-		return false
-	} else {
-		return true
-	}
+	return i == 0
 }
 
 func ptr(v interface{}) unsafe.Pointer {
@@ -150,11 +146,6 @@ func DefineEnum(name string, enumValues []EnumVal) Type {
 
 func DefineEnumFromString(name string, enumString string) {
 	C.TwDefineEnumFromString(C.CString(name), C.CString(enumString))
-}
-
-func DefineStruct(name string, structMembers []StructMember, structSize uint) {
-	numMembers := C.uint(len(structMembers))
-	C.TwDefineStruct(C.CString(name), (*C.TwStructMember)(&structMembers[0]), numMembers, C.size_t(structSize), nil, nil)
 }
 
 type ParamValueType C.TwParamValueType

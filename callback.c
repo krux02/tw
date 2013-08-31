@@ -43,3 +43,11 @@ void TW_CALL HandleError(const char *errorMessage){
 void myHandleErrors() {
 	TwHandleErrors(HandleError);
 }
+
+void TW_CALL HandleSummary(char *summaryString, size_t summaryMaxLength, const void *value, void *clientData) {
+	goSummary(summaryString, summaryMaxLength, (void*)value);
+}
+
+TwType myDefineStruct(const char *name, const TwStructMember *structMembers, unsigned int nbMembers, size_t structSize) {
+	return TwDefineStruct(name, structMembers, nbMembers, structSize, HandleSummary, NULL);
+}
