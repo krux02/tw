@@ -36,6 +36,11 @@ int myAddButton(TwBar *bar, char *name, int currentButton, char *def) {
 	return TwAddButton(bar, name, Button, offset, def);
 }
 
+TwStructMember myCreateStructMember(char* name, TwType type, size_t offset, char* defString) {
+	TwStructMember member = {name, type, offset, defString};
+	return member;
+}
+
 void TW_CALL HandleError(const char *errorMessage){
 	goHandleError((char*)errorMessage);
 }

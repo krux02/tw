@@ -208,6 +208,7 @@ func WindowExists(windowID int) bool {
 }
 
 type KeyModifier C.TwKeyModifier
+
 const (
 	KMOD_NONE  = C.TW_KMOD_NONE // same codes as SDL keysym.mod
 	KMOD_SHIFT = C.TW_KMOD_SHIFT
@@ -262,17 +263,19 @@ func KeyTest(key int, modifiers int) bool {
 	return toBool(C.TwKeyTest(C.int(key), C.int(modifiers)))
 }
 
-type MouseAction C.TwMouseAction;
+type MouseAction C.TwMouseAction
+
 const (
-    MOUSE_RELEASED = C.TW_MOUSE_RELEASED
-    MOUSE_PRESSED  = C.TW_MOUSE_PRESSED
+	MOUSE_RELEASED = C.TW_MOUSE_RELEASED
+	MOUSE_PRESSED  = C.TW_MOUSE_PRESSED
 )
 
 type MouseButtonID C.TwMouseButtonID
+
 const (
-    MOUSE_LEFT       = C.TW_MOUSE_LEFT    // same code as SDL_BUTTON_LEFT
-    MOUSE_MIDDLE     = C.TW_MOUSE_MIDDLE  // same code as SDL_BUTTON_MIDDLE
-    MOUSE_RIGHT      = C.TW_MOUSE_RIGHT   // same code as SDL_BUTTON_RIGHT
+	MOUSE_LEFT   = C.TW_MOUSE_LEFT   // same code as SDL_BUTTON_LEFT
+	MOUSE_MIDDLE = C.TW_MOUSE_MIDDLE // same code as SDL_BUTTON_MIDDLE
+	MOUSE_RIGHT  = C.TW_MOUSE_RIGHT  // same code as SDL_BUTTON_RIGHT
 )
 
 func MouseButton(action MouseAction, button MouseButtonID) bool {
@@ -280,7 +283,7 @@ func MouseButton(action MouseAction, button MouseButtonID) bool {
 }
 
 func MouseMotion(mouseX, mouseY int) bool {
-	return toBool(C.TwMouseMotion(C.int(mouseX),C.int(mouseY)))
+	return toBool(C.TwMouseMotion(C.int(mouseX), C.int(mouseY)))
 }
 
 func MouseWheel(pos int) bool {
@@ -292,11 +295,11 @@ func GetLastError() string {
 }
 
 func EventMouseButtonGLFW(glfwButton, glfwAction int) {
-	C.TwEventMouseButtonGLFW(C.int(glfwButton),C.int(glfwAction))
+	C.TwEventMouseButtonGLFW(C.int(glfwButton), C.int(glfwAction))
 }
 
 func EventKeyGLFW(glfwKey, glfwAction int) {
-	C.TwEventKeyGLFW( C.int(glfwKey), C.int(glfwAction) )
+	C.TwEventKeyGLFW(C.int(glfwKey), C.int(glfwAction))
 }
 
 func EventCharGLFW(glfwChar, glfwAction int) {

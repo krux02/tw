@@ -71,7 +71,7 @@ var summaryCallback0 SummaryCallback
 //export goSummary
 func goSummary(summaryString *C.char, summaryMaxLength C.size_t, value unsafe.Pointer) {
 	str := summaryCallback0(value)
-	C.strncpy(summaryString, C.CString(str), summaryMaxLength);
+	C.strncpy(summaryString, C.CString(str), summaryMaxLength)
 }
 
 func DefineStruct(name string, structMembers []StructMember, structSize uint, summaryCallback SummaryCallback) Type {
@@ -80,11 +80,15 @@ func DefineStruct(name string, structMembers []StructMember, structSize uint, su
 	numMembers := C.uint(len(structMembers))
 	memberPtr := (*C.TwStructMember)(&structMembers[0])
 
-	if( summaryCallback == nil ) {
+	if summaryCallback == nil {
 		return Type(C.TwDefineStruct(c_name, memberPtr, numMembers, c_size, nil, nil))
 	} else {
 		summaryCallback0 = summaryCallback
 		return Type(C.myDefineStruct(c_name, memberPtr, numMembers, c_size))
 	}
 	panic("")
+}
+
+func CreateStructMember(name string, type_ Type, offset uint, defString string) StructMember {
+	return StructMember(C.myCreateStructMember(C.CString(name), C.TwType(type_), C.size_t(offset), C.CString(defString)))
 }
