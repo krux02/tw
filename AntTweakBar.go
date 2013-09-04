@@ -89,27 +89,27 @@ func (bar *Bar) RefreshBar() bool {
 type Type C.TwType
 
 const (
-	TYPE_DIR3F    = C.TW_TYPE_DIR3F
-	TYPE_DIR3D    = C.TW_TYPE_DIR3D
-	TYPE_QUAT4F   = C.TW_TYPE_QUAT4F
-	TYPE_QUAT4D   = C.TW_TYPE_QUAT4D
-	TYPE_CDSTRING = C.TW_TYPE_CDSTRING
 	// W_TYPE_CSSTRING(maxsize) = C.TW_TYPE_CSSTRING(maxsize)
-	TYPE_COLOR4F = C.TW_TYPE_COLOR4F
-	TYPE_COLOR3F = C.TW_TYPE_COLOR3F
-	TYPE_COLOR32 = C.TW_TYPE_COLOR32
-	TYPE_DOUBLE  = C.TW_TYPE_DOUBLE
-	TYPE_FLOAT   = C.TW_TYPE_FLOAT
-	TYPE_UINT32  = C.TW_TYPE_UINT32
-	TYPE_INT32   = C.TW_TYPE_INT32
-	TYPE_UINT16  = C.TW_TYPE_UINT16
-	TYPE_INT16   = C.TW_TYPE_INT16
-	TYPE_UINT8   = C.TW_TYPE_UINT8
-	TYPE_INT8    = C.TW_TYPE_INT8
-	TYPE_CHAR    = C.TW_TYPE_CHAR
-	TYPE_BOOL32  = C.TW_TYPE_BOOL32
-	TYPE_BOOL16  = C.TW_TYPE_BOOL16
-	TYPE_BOOL8   = C.TW_TYPE_BOOL8
+	TYPE_DIR3F    Type = C.TW_TYPE_DIR3F
+	TYPE_DIR3D    Type = C.TW_TYPE_DIR3D
+	TYPE_QUAT4F   Type = C.TW_TYPE_QUAT4F
+	TYPE_QUAT4D   Type = C.TW_TYPE_QUAT4D
+	TYPE_CDSTRING Type = C.TW_TYPE_CDSTRING
+	TYPE_COLOR4F  Type = C.TW_TYPE_COLOR4F
+	TYPE_COLOR3F  Type = C.TW_TYPE_COLOR3F
+	TYPE_COLOR32  Type = C.TW_TYPE_COLOR32
+	TYPE_DOUBLE   Type = C.TW_TYPE_DOUBLE
+	TYPE_FLOAT    Type = C.TW_TYPE_FLOAT
+	TYPE_UINT32   Type = C.TW_TYPE_UINT32
+	TYPE_INT32    Type = C.TW_TYPE_INT32
+	TYPE_UINT16   Type = C.TW_TYPE_UINT16
+	TYPE_INT16    Type = C.TW_TYPE_INT16
+	TYPE_UINT8    Type = C.TW_TYPE_UINT8
+	TYPE_INT8     Type = C.TW_TYPE_INT8
+	TYPE_CHAR     Type = C.TW_TYPE_CHAR
+	TYPE_BOOL32   Type = C.TW_TYPE_BOOL32
+	TYPE_BOOL16   Type = C.TW_TYPE_BOOL16
+	TYPE_BOOL8    Type = C.TW_TYPE_BOOL8
 )
 
 func (bar *Bar) AddVarRW(name string, type_ Type, var_ unsafe.Pointer, def string) bool {
@@ -151,10 +151,10 @@ func DefineEnumFromString(name string, enumString string) {
 type ParamValueType C.TwParamValueType
 
 const (
-	PARAM_INT32   = C.TW_PARAM_INT32
-	PARAM_FLOAT   = C.TW_PARAM_FLOAT
-	PARAM_DOUBLE  = C.TW_PARAM_DOUBLE
-	PARAM_CSTRING = C.TW_PARAM_CSTRING // Null-terminated array of char (ie, c-string)
+	PARAM_INT32   ParamValueType = C.TW_PARAM_INT32
+	PARAM_FLOAT   ParamValueType = C.TW_PARAM_FLOAT
+	PARAM_DOUBLE  ParamValueType = C.TW_PARAM_DOUBLE
+	PARAM_CSTRING ParamValueType = C.TW_PARAM_CSTRING // Null-terminated array of char (ie, c-string)
 )
 
 func (bar *Bar) GetParam(varName string, paramName string, paramValueType ParamValueType, outValueMaxCount int, outValues unsafe.Pointer) bool {
@@ -172,11 +172,11 @@ func (bar *Bar) TwSetParam(varName string, paramName string, paramValueType Para
 type GraphAPI C.TwGraphAPI
 
 const (
-	OPENGL_CORE = C.TW_OPENGL_CORE
-	OPENGL      = C.TW_OPENGL
-	DIRECT3D9   = C.TW_DIRECT3D9
-	DIRECT3D10  = C.TW_DIRECT3D10
-	DIRECT3D11  = C.TW_DIRECT3D11
+	OPENGL_CORE GraphAPI = C.TW_OPENGL_CORE
+	OPENGL      GraphAPI = C.TW_OPENGL
+	DIRECT3D9   GraphAPI = C.TW_DIRECT3D9
+	DIRECT3D10  GraphAPI = C.TW_DIRECT3D10
+	DIRECT3D11  GraphAPI = C.TW_DIRECT3D11
 )
 
 func Init(graphAPI GraphAPI, device unsafe.Pointer) bool {
@@ -210,49 +210,49 @@ func WindowExists(windowID int) bool {
 type KeyModifier C.TwKeyModifier
 
 const (
-	KMOD_NONE  = C.TW_KMOD_NONE // same codes as SDL keysym.mod
-	KMOD_SHIFT = C.TW_KMOD_SHIFT
-	KMOD_CTRL  = C.TW_KMOD_CTRL
-	KMOD_ALT   = C.TW_KMOD_ALT
-	KMOD_META  = C.TW_KMOD_META
+	KMOD_NONE  KeyModifier = C.TW_KMOD_NONE // same codes as SDL keysym.mod
+	KMOD_SHIFT KeyModifier = C.TW_KMOD_SHIFT
+	KMOD_CTRL  KeyModifier = C.TW_KMOD_CTRL
+	KMOD_ALT   KeyModifier = C.TW_KMOD_ALT
+	KMOD_META  KeyModifier = C.TW_KMOD_META
 )
 
 type KeySpecial C.TwKeySpecial
 
 const (
-	KEY_BACKSPACE = C.TW_KEY_BACKSPACE
-	KEY_TAB       = C.TW_KEY_TAB
-	KEY_CLEAR     = C.TW_KEY_CLEAR
-	KEY_RETURN    = C.TW_KEY_RETURN
-	KEY_PAUSE     = C.TW_KEY_PAUSE
-	KEY_ESCAPE    = C.TW_KEY_ESCAPE
-	KEY_SPACE     = C.TW_KEY_SPACE
-	KEY_DELETE    = C.TW_KEY_DELETE
-	KEY_UP        = C.TW_KEY_UP
-	KEY_DOWN      = C.TW_KEY_DOWN
-	KEY_RIGHT     = C.TW_KEY_RIGHT
-	KEY_LEFT      = C.TW_KEY_LEFT
-	KEY_INSERT    = C.TW_KEY_INSERT
-	KEY_HOME      = C.TW_KEY_HOME
-	KEY_END       = C.TW_KEY_END
-	KEY_PAGE_UP   = C.TW_KEY_PAGE_UP
-	KEY_PAGE_DOWN = C.TW_KEY_PAGE_DOWN
-	KEY_F1        = C.TW_KEY_F1
-	KEY_F2        = C.TW_KEY_F2
-	KEY_F3        = C.TW_KEY_F3
-	KEY_F4        = C.TW_KEY_F4
-	KEY_F5        = C.TW_KEY_F5
-	KEY_F6        = C.TW_KEY_F6
-	KEY_F7        = C.TW_KEY_F7
-	KEY_F8        = C.TW_KEY_F8
-	KEY_F9        = C.TW_KEY_F9
-	KEY_F10       = C.TW_KEY_F10
-	KEY_F11       = C.TW_KEY_F11
-	KEY_F12       = C.TW_KEY_F12
-	KEY_F13       = C.TW_KEY_F13
-	KEY_F14       = C.TW_KEY_F14
-	KEY_F15       = C.TW_KEY_F15
-	KEY_LAST      = C.TW_KEY_LAST
+	KEY_BACKSPACE KeySpecial = C.TW_KEY_BACKSPACE
+	KEY_TAB       KeySpecial = C.TW_KEY_TAB
+	KEY_CLEAR     KeySpecial = C.TW_KEY_CLEAR
+	KEY_RETURN    KeySpecial = C.TW_KEY_RETURN
+	KEY_PAUSE     KeySpecial = C.TW_KEY_PAUSE
+	KEY_ESCAPE    KeySpecial = C.TW_KEY_ESCAPE
+	KEY_SPACE     KeySpecial = C.TW_KEY_SPACE
+	KEY_DELETE    KeySpecial = C.TW_KEY_DELETE
+	KEY_UP        KeySpecial = C.TW_KEY_UP
+	KEY_DOWN      KeySpecial = C.TW_KEY_DOWN
+	KEY_RIGHT     KeySpecial = C.TW_KEY_RIGHT
+	KEY_LEFT      KeySpecial = C.TW_KEY_LEFT
+	KEY_INSERT    KeySpecial = C.TW_KEY_INSERT
+	KEY_HOME      KeySpecial = C.TW_KEY_HOME
+	KEY_END       KeySpecial = C.TW_KEY_END
+	KEY_PAGE_UP   KeySpecial = C.TW_KEY_PAGE_UP
+	KEY_PAGE_DOWN KeySpecial = C.TW_KEY_PAGE_DOWN
+	KEY_F1        KeySpecial = C.TW_KEY_F1
+	KEY_F2        KeySpecial = C.TW_KEY_F2
+	KEY_F3        KeySpecial = C.TW_KEY_F3
+	KEY_F4        KeySpecial = C.TW_KEY_F4
+	KEY_F5        KeySpecial = C.TW_KEY_F5
+	KEY_F6        KeySpecial = C.TW_KEY_F6
+	KEY_F7        KeySpecial = C.TW_KEY_F7
+	KEY_F8        KeySpecial = C.TW_KEY_F8
+	KEY_F9        KeySpecial = C.TW_KEY_F9
+	KEY_F10       KeySpecial = C.TW_KEY_F10
+	KEY_F11       KeySpecial = C.TW_KEY_F11
+	KEY_F12       KeySpecial = C.TW_KEY_F12
+	KEY_F13       KeySpecial = C.TW_KEY_F13
+	KEY_F14       KeySpecial = C.TW_KEY_F14
+	KEY_F15       KeySpecial = C.TW_KEY_F15
+	KEY_LAST      KeySpecial = C.TW_KEY_LAST
 )
 
 func KeyPressed(key int, modifiers int) bool {
