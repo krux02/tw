@@ -313,3 +313,9 @@ func EventMousePosGLFW(mouseX, mouseY int) {
 func EventMouseWheelGLFW(wheelPos int) {
 	C.TwEventMouseWheelGLFW(C.int(wheelPos))
 }
+
+func EventSDL(event interface{}, sdlMajorVersion, sdlMinorVersion uint8) bool {
+	_sdlMajorVersion := C.uchar(sdlMajorVersion)
+	_sdlMinorVersion := C.uchar(sdlMinorVersion)
+	return toBool(C.TwEventSDL(ptr(event), _sdlMajorVersion, _sdlMinorVersion))
+}
