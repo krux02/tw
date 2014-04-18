@@ -4,3 +4,6 @@ CODE_DIR = ./AntTweakBar/src
 
 ant_tweak_bar:
 	$(MAKE) -C $(CODE_DIR)
+
+clean:
+	$(MAKE) -C $(CODE_DIR) clean
