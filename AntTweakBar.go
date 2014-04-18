@@ -2,7 +2,9 @@
 package tw
 
 /*
-#cgo linux LDFLAGS: -L/usr/local/lib -lAntTweakBar -lstdc++ -lGL
+//#cgo linux LDFLAGS: ./AntTweakBar/lib/libAntTweakBar.a -lstdc++ -lGL -lm -lX11
+#cgo linux LDFLAGS: /home/arne/gocode/src/github.com/krux02/tw/AntTweakBar/lib/libAntTweakBar.a -lstdc++ -lGL -lm -lX11
+#cgo CFLAGS: -I./AntTweakBar/include/
 #include <AntTweakBar.h>
 */
 import "C"
