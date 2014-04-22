@@ -12,10 +12,9 @@
 //  ---------------------------------------------------------------------------
 
 
-#include <SDL2/SDL.h>
+#include "MiniSDL20.h"
 #include <AntTweakBar.h>
 #include <stdio.h>
-
 
 //  The way SDL handles keyboard events has changed between version 1.2
 //  and 2.0. It is now more difficult to translate SDL keyboard events to 
@@ -39,38 +38,38 @@ int TW_CALL TwEventSDL20(const void *sdlEvent)
     case SDL_KEYDOWN:
         if( event->key.keysym.sym & SDLK_SCANCODE_MASK ) {
             int key = 0;
-            switch( event->key.keysym.sym ) {
-            case SDLK_UP:
+            switch( event->key.keysym.scancode ) {
+            case SDL_SCANCODE_UP:
                 key = TW_KEY_UP;
                 break;
-            case SDLK_DOWN:
+            case SDL_SCANCODE_DOWN:
                 key = TW_KEY_DOWN;
                 break;
-            case SDLK_RIGHT:
+            case SDL_SCANCODE_RIGHT:
                 key = TW_KEY_RIGHT;
                 break;
-            case SDLK_LEFT:
+            case SDL_SCANCODE_LEFT:
                 key = TW_KEY_LEFT;
                 break;
-            case SDLK_INSERT:
+            case SDL_SCANCODE_INSERT:
                 key = TW_KEY_INSERT;
                 break;
-            case SDLK_HOME:
+            case SDL_SCANCODE_HOME:
                 key = TW_KEY_HOME;
                 break;
-            case SDLK_END:
+            case SDL_SCANCODE_END:
                 key = TW_KEY_END;
                 break;
-            case SDLK_PAGEUP:
+            case SDL_SCANCODE_PAGEUP:
                 key = TW_KEY_PAGE_UP;
                 break;
-            case SDLK_PAGEDOWN:
+            case SDL_SCANCODE_PAGEDOWN:
                 key = TW_KEY_PAGE_DOWN;
                 break;
             default:
-                if( event->key.keysym.sym>=SDLK_F1 &&
-                    event->key.keysym.sym<=SDLK_F12 ) {
-                  key = event->key.keysym.sym + TW_KEY_F1 - SDLK_F1;
+                if( event->key.keysym.scancode >= SDL_SCANCODE_F1 &&
+                    event->key.keysym.scancode <= SDL_SCANCODE_F12 ) {
+                  key = event->key.keysym.scancode + TW_KEY_F1 - SDL_SCANCODE_F1;
                 }
                 break;
             }
