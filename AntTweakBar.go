@@ -3,7 +3,7 @@ package tw
 
 /*
 //#cgo linux LDFLAGS: ./AntTweakBar/lib/libAntTweakBar.a -lstdc++ -lGL -lm -lX11
-#cgo linux LDFLAGS: /home/doering/gocode/src/github.com/krux02/tw/AntTweakBar/lib/libAntTweakBar.a -lstdc++ -lGL -lm -lX11
+#cgo linux LDFLAGS: ../../../github.com/krux02/tw/AntTweakBar/lib/libAntTweakBar.a -lstdc++ -lGL -lm -lX11
 #cgo CFLAGS: -I./AntTweakBar/include/
 #include <AntTweakBar.h>
 */
